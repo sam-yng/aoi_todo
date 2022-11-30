@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'interreg';
+    src: url('../assets/fonts/InterTight-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'interlight';
+    src: url('../assets/fonts/InterTight-ExtraLight.ttf');
+}
+
+@font-face {
+    font-family: 'interbod';
+    src: url('../assets/fonts/InterTight-Bold.ttf');
+}
