@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react"
-import { Helmet } from 'react-helmet'
 import '../css/global.css';
 import Plus from "../assets/images/plus.png";
-import { ProList, ComList, BacList } from '../components/list'
+import { DragDropContext } from 'react-beautiful-dnd';
 
 
 function CreateTask({ addTask }) {
@@ -48,10 +47,7 @@ function CreateTask({ addTask }) {
 function Todo() {
 
     const [tasks, setTasks] = useState([
-        {
-            title: "Finish todo list",
 
-        },
     ]);
 
 
@@ -69,6 +65,7 @@ function Todo() {
             newTasks.splice(index, 1);
             setTasks(newTasks);
         };
+
 
         return (
             <div
@@ -99,7 +96,6 @@ function Todo() {
                         Backlog
                     </h1>
 
-
                     {
                         tasks &&
                         tasks.map((task, index) => (
@@ -114,7 +110,9 @@ function Todo() {
                                 />
 
                             </div>
-                        ))}
+                        ))
+                    }
+
                 </div>
 
                 <div className='font-interreg text-[22px] mt-4 flex-col w-full'>
