@@ -1,7 +1,5 @@
 import React from 'react'
-import Todo from './todo'
 import '../css/global.css'
-
 
 export type BacListProps = {
     title: string;
@@ -14,7 +12,7 @@ export const BacList: React.FC<BacListProps> = ({
 
 }) => (
 
-    <div className='font-interreg text-[22px] mt-4'>
+    <div className='font-interreg text-[22px] mt-4 flex-col'>
         <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
             {title}
         </h1>
@@ -33,11 +31,10 @@ export const ProList: React.FC<ProListProps> = ({
 
 }) => (
 
-    <div className='font-interreg text-[22px] mt-4'>
+    <div className='font-interreg text-[22px] mt-4 flex-col'>
         <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
             {title}
         </h1>
-
     </div>
 
 );
@@ -53,7 +50,7 @@ export const ComList: React.FC<ComListProps> = ({
 
 }) => (
 
-    <div className='font-interreg text-[22px] mt-4'>
+    <div className='font-interreg text-[22px] mt-4 flex-col'>
         <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
             {title}
         </h1>

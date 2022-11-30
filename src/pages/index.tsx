@@ -29,24 +29,20 @@ function CreateTask({ addTask }) {
           className="h-[5vh] text-gray-500 text-center w-[6.5vw] hover:bg-gray-100 rounded-xl"
           placeholder="Add Item"
         />
+        {/*
         <button
           type='submit'
           className='ml-2'>
           <img className="h-4 mb-1 inline-block" src={Plus} />
         </button>
+        */}
       </form>
     </div>
   );
 }
 
 
-function Task({ task }) {
-  return (
-    <div className='text-[18px] ml-2'>
-      {task.title}
-    </div>
-  );
-}
+
 
 function Todo() {
   const [tasks, setTasks] = useState([
@@ -61,6 +57,30 @@ function Todo() {
     setTasks(newTasks);
   };
 
+  const removeTask = (index: number) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
+
+  function Task({ task }) {
+    return (
+      <div
+        className='text-[18px] ml-2 hover:cursor-pointer'>
+        {task.title}
+
+
+        <img
+          src={Plus}
+          className="h-4 ml-4 inline-block rotate-45"
+          onClick={removeTask} >
+
+        </img>
+
+      </div>
+    );
+  }
+
   return (
     <div>
       <div>
@@ -68,28 +88,40 @@ function Todo() {
       </div>
 
       <div className="flex flex-row justify-between">
-        <BacList
-          title={'Backlog'}
-        />
+        <div className='font-interreg text-[22px] mt-4 flex-col w-full'>
+          <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
+            Backlog
+          </h1>
 
-        <ProList
-          title={"In Progress"}
-        />
+          <div
+            draggable="true"
 
-        <ComList
-          title={"Completed"}
-        />
+          >
+            {tasks.map((task, index) => (
+              <Task
+                task={task}
+                index={index}
+                key={index}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className='font-interreg text-[22px] mt-4 flex-col w-full'>
+          <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
+            In Progress
+          </h1>
+        </div>
+
+        <div className='font-interreg text-[22px] mt-4 flex-col w-full'>
+          <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
+            Completed
+          </h1>
+        </div>
+
       </div>
 
-      <div>
-        {tasks.map((task, index) => (
-          <Task
-            task={task}
 
-          />
-        ))}
-
-      </div>
 
     </div>
   );
@@ -122,7 +154,7 @@ const IndexPage = () => (
     </Helmet>
 
 
-    <body className="max-h-screen min-h-screen ml-20 max-w-[45%]">
+    <body className="max-h-screen min-h-screen ml-20 max-w-[50%]">
 
       <div className="flex flex-row pt-8 pb-6">
         <h1 className="font-interreg text-[50px] animate-shake">
