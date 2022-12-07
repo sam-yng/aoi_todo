@@ -46,6 +46,13 @@ function CreateTask({ addTask }) {
 
 function Todo() {
 
+    const [visibile, setVisibility] = useState(false);
+    const divStyle = { display: visibile }
+    const handleClick = (event: any) => {
+        setVisibility(current => !current);
+    };
+
+
     const [tasks, setTasks] = useState([
 
     ]);
@@ -69,16 +76,24 @@ function Todo() {
 
         return (
             <div
-                className='text-[18px] ml-2 mt-1 hover:cursor-pointer'>
-                {task.title}
+                className='text-[18px] ml-2 mt-1 mb-1 hover:cursor-pointer'>
 
 
                 <img
                     src={Plus}
-                    className="h-4 ml-4 inline-block rotate-45"
+                    className="h-4 mr-2 inline-block rotate-45"
                     onClick={() => removeTask(index)} >
-
                 </img>
+
+                <img
+                    src={Plus}
+                    className="h-4 mr-6 inline-block"
+                    onClick={() => { handleClick(); setVisibility('none'); }}
+                >
+                </img>
+
+                {task.title}
+
 
             </div>
         );
@@ -93,7 +108,7 @@ function Todo() {
             <div className="flex flex-row justify-between">
                 <div className='font-interreg text-[22px] mt-4 flex-col w-full'>
                     <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
-                        Backlog
+                        In Progress
                     </h1>
 
                     {
@@ -101,6 +116,8 @@ function Todo() {
                         tasks.map((task, index) => (
                             <div
                                 draggable
+                                className="border-2 rounded-lg shadow-lg w-[70%] my-4"
+                                style={divStyle}
                             >
                                 <Task
                                     task={task}
@@ -117,16 +134,31 @@ function Todo() {
 
                 <div className='font-interreg text-[22px] mt-4 flex-col w-full'>
                     <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
-                        In Progress
-                    </h1>
-
-                </div>
-
-                <div className='font-interreg text-[22px] mt-4 flex-col w-full'>
-                    <h1 className='mb-4 bg-gray-100 rounded-xl w-[9vw] text-center py-2'>
                         Completed
                     </h1>
+
+                    {
+                        visibile &&
+                        tasks &&
+                        tasks.map((task, index) => (
+                            <div
+                                draggable
+                                className="border-2 rounded-lg shadow-lg w-[70%] my-4"
+
+                            >
+                                <Task
+                                    task={task}
+                                    index={index}
+                                    key={index}
+
+                                />
+
+                            </div>
+                        ))
+                    }
+
                 </div>
+
 
             </div>
 

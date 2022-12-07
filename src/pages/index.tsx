@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react"
 import { Helmet } from 'react-helmet'
 import '../css/global.css';
 import Plus from "../assets/images/plus.png";
-import { ProList, ComList, BacList } from '../components/list'
 import Todo from '../components/todo'
 
 
@@ -33,7 +32,7 @@ const IndexPage = () => (
     </Helmet>
 
 
-    <body className="max-h-screen min-h-screen ml-20 max-w-[50%]">
+    <body className="max-h-screen min-h-screen ml-20 max-w-[40%]">
 
       <div className="flex flex-row pt-8 pb-6">
         <h1 className="font-interreg text-[50px] animate-shake">
